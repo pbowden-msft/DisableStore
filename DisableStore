@@ -2,7 +2,7 @@
 #set -x
 
 TOOL_NAME="Microsoft Office 2016 Disable Store Tool"
-TOOL_VERSION="1.0"
+TOOL_VERSION="1.1"
 
 ## Copyright (c) 2017 Microsoft Corp. All rights reserved.
 ## Scripts are not supported under any Microsoft standard support program or service. The scripts are provided AS IS without warranty of any kind.
@@ -45,6 +45,10 @@ function CheckRunning {
 	fi
 	POWERPOINTRUNSTATE=$(CheckLaunchState "$POWERPOINT2016PATH")
 	if [ "$POWERPOINTRUNSTATE" == "1" ]; then
+		OPENAPPS=$(($OPENAPPS + 1))
+	fi
+	OUTLOOKRUNSTATE=$(CheckLaunchState "$OUTLOOK2016PATH")
+	if [ "$OUTLOOKRUNSTATE" == "1" ]; then
 		OPENAPPS=$(($OPENAPPS + 1))
 	fi
 	if [ "$OPENAPPS" != "0" ]; then
@@ -112,24 +116,26 @@ fi
 if [ $ENABLE ]; then
 	APPSRUNNING=$(CheckRunning)
 	if [ "$APPSRUNNING" == "1" ]; then
-		echo "ERROR: Office 2016 apps are open. Quit Word, Excel and PowerPoint and re-run the tool."
+		echo "ERROR: Office 2016 apps are open. Quit Word, Excel, PowerPoint and Outlook and re-run the tool."
 		echo
 		exit 1
 	fi
 	CreateRibbonCustomization "Word" "Word"
 	CreateRibbonCustomization "Excel" "Excel"
 	CreateRibbonCustomization "Powerpoint" "PowerPoint"
+	CreateRibbonCustomization "Outlook" "Outlook"
 	echo "Store and Add-in icons have been removed."
 elif [ $DISABLE ]; then
 	APPSRUNNING=$(CheckRunning)
 	if [ "$APPSRUNNING" == "1" ]; then
-		echo "ERROR: Office 2016 apps are open. Quit Word, Excel and PowerPoint and re-run the tool."
+		echo "ERROR: Office 2016 apps are open. Quit Word, Excel, PowerPoint and Outlook and re-run the tool."
 		echo
 		exit 1
 	fi
 	RemoveRibbonCustomization "Word" "Word"
 	RemoveRibbonCustomization "Excel" "Excel"
 	RemoveRibbonCustomization "Powerpoint" "PowerPoint"
+	RemoveRibbonCustomization "Outlook" "Outlook"
 	echo "All ribbon customizations have been reverted."
 fi 
 
