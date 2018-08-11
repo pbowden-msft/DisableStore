@@ -1,7 +1,7 @@
 # DisableStore
-<b>Microsoft Office 2016 Disable Store Tool</b>
+<b>Microsoft Office 365/2019/2016 Disable Store Tool</b>
 
-Purpose: Purpose: Removes the Store and Add-in icons from the ribbon in Office 2016 for Mac apps</br>
+Purpose: Purpose: Removes the Store and Add-in icons from the ribbon in Office 365/2019/2016 for Mac apps</br>
 Usage: `DisableStore [--True] [--False]`</br>
 Example: `DisableStore --True`</br>
 

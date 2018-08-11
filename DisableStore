@@ -1,10 +1,10 @@
 #!/bin/sh
 #set -x
 
-TOOL_NAME="Microsoft Office 2016 Disable Store Tool"
-TOOL_VERSION="1.1"
+TOOL_NAME="Microsoft Office 365/2019/2016 Disable Store Tool"
+TOOL_VERSION="1.2"
 
-## Copyright (c) 2017 Microsoft Corp. All rights reserved.
+## Copyright (c) 2018 Microsoft Corp. All rights reserved.
 ## Scripts are not supported under any Microsoft standard support program or service. The scripts are provided AS IS without warranty of any kind.
 ## Microsoft disclaims all implied warranties including, without limitation, any implied warranties of merchantability or of fitness for a 
 ## particular purpose. The entire risk arising out of the use or performance of the scripts and documentation remains with you. In no event shall
@@ -25,7 +25,7 @@ SCRIPTPATH=$( cd $(dirname $0) ; pwd -P )
 function ShowUsage {
 # Shows tool usage and parameters
 	echo $TOOL_NAME - $TOOL_VERSION
-	echo "Purpose: Removes the Store and Add-in icons from the ribbon in Office 2016 for Mac apps"
+	echo "Purpose: Removes the Store and Add-in icons from the ribbon in Office 365/2019/2016 for Mac apps"
 	echo "Usage: DisableStore [--True] [--False]"
 	echo "Example: DisableStore --True"
 	echo
@@ -115,7 +115,7 @@ fi
 if [ $ENABLE ]; then
 	APPSRUNNING=$(CheckRunning)
 	if [ "$APPSRUNNING" == "1" ]; then
-		echo "ERROR: Office 2016 apps are open. Quit Word, Excel and PowerPoint and re-run the tool."
+		echo "ERROR: Office apps are open. Quit Word, Excel and PowerPoint and re-run the tool."
 		echo
 		exit 1
 	fi
@@ -126,7 +126,7 @@ if [ $ENABLE ]; then
 elif [ $DISABLE ]; then
 	APPSRUNNING=$(CheckRunning)
 	if [ "$APPSRUNNING" == "1" ]; then
-		echo "ERROR: Office 2016 apps are open. Quit Word, Excel and PowerPoint and re-run the tool."
+		echo "ERROR: Office apps are open. Quit Word, Excel and PowerPoint and re-run the tool."
 		echo
 		exit 1
 	fi
